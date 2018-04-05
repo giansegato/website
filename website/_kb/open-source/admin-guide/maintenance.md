@@ -24,6 +24,20 @@ and the following line underneath `[program:redash_celery]`:
 stdout_logfile=/opt/redash/current/logs/celery.log
 ```
 
+Please make sure that the `/opt/redash/current/logs/` folder does actually exist. If it doesn't, the supervisor won't switch on anymore. 
+
+```
+cd `/opt/redash/current/
+sudo mkdir logs
+```
+
+In you changed the configuration file, in order to have the changes take effect, you must restart the supervisor and all the processes:
+
+```
+sudo service supervisor restart
+sudo supervisorctl restart all
+```
+
 ## Restart
 
 * Restart all processes: `sudo supervisorctl restart all`.
